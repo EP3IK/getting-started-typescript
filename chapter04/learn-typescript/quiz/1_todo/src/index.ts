@@ -1,7 +1,13 @@
+type TodoItem = {
+  id: number;
+  title: string;
+  done: boolean;
+};
+
 let todoItems;
 
 // api
-function fetchTodoItems() {
+function fetchTodoItems(): TodoItem[] {
   const todos = [
     { id: 1, title: '안녕', done: false },
     { id: 2, title: '타입', done: false },
@@ -11,30 +17,30 @@ function fetchTodoItems() {
 }
 
 // crud methods
-function fetchTodos() {
+function fetchTodos(): TodoItem[] {
   const todos = fetchTodoItems();
   return todos;
 }
 
-function addTodo(todo) {
+function addTodo(todo): void {
   todoItems.push(todo);
 }
 
-function deleteTodo(index) {
+function deleteTodo(index): void {
   todoItems.splice(index, 1);
 }
 
-function completeTodo(index, todo) {
+function completeTodo(index, todo): void {
   todo.done = true;
   todoItems.splice(index, 1, todo);
 }
 
 // business logic
-function logFirstTodo() {
+function logFirstTodo(): TodoItem {
   return todoItems[0];
 }
 
-function showCompleted() {
+function showCompleted(): TodoItem[] {
   return todoItems.filter(item => item.done);
 }
 
